@@ -1,0 +1,413 @@
+\documentclass[11pt,oneside]{book}
+\usepackage[a4paper,left=1in,right=1in,top=1in,bottom=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{xurl}
+\usepackage{qrcode}
+\usepackage[hidelinks]{hyperref}
+\usepackage{bookmark}
+\setcounter{tocdepth}{2}
+\setlength{\parskip}{0.45em}
+\setlength{\parindent}{0pt}
+\setlist[enumerate]{leftmargin=*,itemsep=0.25em}
+\setlist[itemize]{leftmargin=*,itemsep=0.2em}
+\hypersetup{pdftitle={A Beginner's Guide to Moodle with NVDA},
+  pdfauthor={Ahmad Abdulqadir Abubakar},
+  pdfsubject={Independent Moodle examination access for blind students},
+  hypertexnames=false}
+\newcommand{\pdfdownloadurl}{https://github.com/Arfs6/moodle-nvda-exam-guide/releases/latest/download/moodle-nvda-exam-guide.pdf}
+\title{\Huge\bfseries A Beginner's Guide to Moodle with NVDA\\[0.5em]
+\large A practical guide to accessing Moodle examinations independently}
+\author{Ahmad Abdulqadir Abubakar}
+\date{2026}
+\begin{document}
+\frontmatter
+\maketitle
+\thispagestyle{empty}
+\begin{center}
+	\textbf{Download the latest PDF}\par
+	\vspace{0.5em}
+	\qrcode[height=3cm]{\pdfdownloadurl}\par
+	\vspace{0.5em}
+	\small Scan the code or visit the project page and choose the latest release.\par
+	\href{\pdfdownloadurl}{\url{https://github.com/Arfs6/moodle-nvda-exam-guide}}
+\end{center}
+\vfill
+\begin{center}
+	\small Licensed under the Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0).\par
+	\href{https://creativecommons.org/licenses/by-sa/4.0/}{creativecommons.org/licenses/by-sa/4.0/}
+\end{center}
+\cleardoublepage
+
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+
+Digital learning platforms can open doors to education, but those doors are easiest to use when learners can navigate them independently. Moodle is a widely used learning management system for accessing course materials, communicating with instructors, and completing activities such as quizzes. For blind and low-vision learners who use a screen reader, learning the platform's structure and keyboard navigation can make these tasks more manageable.
+
+This manual was created to help staff of the University of Jos guide blind students towards writing examinations on Moodle independently. I wrote it during my internship in the Information and Communication Technology (ICT) Directorate of the University of Jos, in the Web Accessibility and Support (WAS) Unit. It is intended as a practical reference for staff, interns, and students who are preparing to use Moodle with NVDA.
+
+This book introduces practical ways to use Moodle with NonVisual Desktop Access (NVDA), a free screen reader for Microsoft Windows. It begins with downloading, installing, and configuring NVDA, then introduces essential keyboard commands and web-page navigation. The final part applies those skills to common Moodle tasks, including opening a course, starting a quiz, navigating questions, checking the time remaining, and submitting an attempt.
+
+The guide is written for beginners and assumes little prior experience with NVDA. Instructions are presented as keyboard-focused steps wherever possible. Because Moodle sites can differ in version, theme, settings, and institutional configuration, the wording and order of controls on your screen may not exactly match every example in this book. NVDA commands and add-on availability can also change between releases. If a control is not where you expect it, use the navigation techniques in this guide to explore the page, and follow your institution's instructions where they differ.
+
+\textbf{A note on keyboard terminology:} ``NVDA'' means the NVDA modifier key currently configured on your computer. By default, this is usually \texttt{Insert}; if you enable Caps Lock as an NVDA modifier, either key may be used. In shortcut instructions, a plus sign means to hold the keys together (for example, \texttt{NVDA + Space}). Press keys rather than clicking them unless a step explicitly says otherwise.
+
+This is a practical beginner's guide, not a substitute for training or for the accessibility guidance provided by your institution. Before a graded assessment, practise navigating a sample course or quiz if one is available. During a real assessment, read each prompt carefully and confirm that you have selected the intended answer before submitting.
+
+\chapter*{Acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+I sincerely acknowledge the staff members who supported my internship and contributed to the work of the WAS Unit: Mr. Gaji, Mr. Ben, and Mr. Daze. I also appreciate all the staff members of the ICT Directorate for their guidance, encouragement, and service to the University of Jos community.
+
+I am grateful to my fellow interns and colleagues, especially Halima Ibrahim and Rapheal, for their companionship, suggestions, and encouragement. I acknowledge all my colleagues for the support we shared throughout the internship.
+
+\chapter*{Glossary}
+\addcontentsline{toc}{chapter}{Glossary}
+\begin{description}[style=nextline,leftmargin=0pt,labelindent=0pt,labelwidth=0pt]
+	\item[NVDA] NonVisual Desktop Access, a free and open-source screen reader for Microsoft Windows. NVDA reads text and controls aloud and can also send information to a braille display.
+	\item[Moodle] An open-source learning management system used by schools and universities to provide course materials, activities, quizzes, and examinations online.
+	\item[Screen reader] Software that presents information on a computer screen as speech or braille so that a blind or visually impaired person can use the computer.
+	\item[Keyboard layout] The NVDA setting that determines whether commands use the Desktop or Laptop arrangement of keys.
+	\item[NVDA modifier key] A key used together with another key to issue an NVDA command. Insert is the usual default, and Caps Lock can also be enabled.
+	\item[Browse Mode] An NVDA mode for reading and navigating structured web content with the arrow keys and quick navigation commands.
+	\item[Focus Mode] An NVDA mode for interacting directly with a form control. In this mode, keystrokes are passed to the control instead of being used as Browse Mode commands.
+	\item[Quick navigation key] A single-letter or number key that moves NVDA to a particular type or level of element in Browse Mode, such as a heading or button.
+	\item[Add-on] An optional extension that adds features to NVDA.
+\end{description}
+
+\chapter*{How to Use This Book}
+\addcontentsline{toc}{chapter}{How to Use This Book}
+The book is arranged in three parts:
+\begin{itemize}
+	\item \textbf{Part I: Getting Started with NVDA} covers installation, basic controls, settings, and useful configuration options.
+	\item \textbf{Part II: Essential NVDA Navigation} explains Browse Mode, Focus Mode, and keyboard commands for navigating web pages.
+	\item \textbf{Part III: Using Moodle with NVDA} applies these skills to logging in, opening courses, and completing quizzes.
+\end{itemize}
+Work through the chapters in order the first time. Later, use the table of contents to return to a task when you need a reminder.
+
+\tableofcontents
+\mainmatter
+
+\part{Getting Started with NVDA}
+
+\chapter{Downloading NVDA}
+\begin{enumerate}
+	\item Open the official NVDA download page: \url{https://www.nvaccess.org/download}.
+	\item Find the download option and activate it.
+	\item When the download finishes, open your Windows \textit{Downloads} folder and locate the installer. Its filename will vary by release; it may resemble \texttt{nvda\_2026.2.exe}.
+\end{enumerate}
+For security, download NVDA from the official NV Access website. The filename shown above is only an example; the current release may have a different version number.
+
+\chapter{Installing NVDA}
+\begin{enumerate}
+	\item Locate the downloaded NVDA installer and run it.
+	\item If Windows displays a security prompt asking whether you want to run the file, verify that you downloaded it from the official source, then choose the appropriate option to continue.
+	\item Read and accept the licence agreement if you agree to its terms.
+	\item Choose \textit{Install NVDA on this computer}.
+	\item Follow the prompts to continue the installation.
+	\item If Windows asks, ``Do you want to allow this app to make changes to your device?'', confirm only if you intended to run the official installer.
+	\item Wait for the installation to finish. Follow any restart or setup instructions shown by the installer.
+\end{enumerate}
+
+\chapter{Starting NVDA}
+You can start NVDA in several ways:
+\begin{enumerate}
+	\item Open the Start menu, search for \textit{NVDA}, and press Enter.
+	\item If a desktop shortcut is available, select it and press Enter.
+	\item If the NVDA keyboard shortcut has been configured on your computer, use it. On some installations, \texttt{Ctrl + Alt + N} may be assigned, but this shortcut is not guaranteed to be available on every system.
+	\item Alternatively, press \texttt{Windows + R}, type \texttt{nvda}, and press Enter, if NVDA is installed and can be launched by that command.
+\end{enumerate}
+
+\chapter{Exiting and Restarting NVDA}
+\section{Exiting NVDA}
+\begin{enumerate}
+	\item Press \texttt{NVDA + Q}.
+	\item The \textit{Exit NVDA} dialog will appear.
+	\item Confirm that \textit{Exit} is selected.
+	\item Use Tab to move to \textit{OK}, then press Enter.
+\end{enumerate}
+
+\section{Restarting NVDA}
+You can restart NVDA from its exit dialog:
+\begin{enumerate}
+	\item Press \texttt{NVDA + Q}.
+	\item Use the arrow keys to select \textit{Restart}, if that option is available in the dialog.
+	\item Press Enter to restart NVDA.
+\end{enumerate}
+You can also launch NVDA again using one of the methods in the previous chapter. The exact options in the exit dialog may vary by version.
+
+\chapter{Opening NVDA Settings}
+\begin{enumerate}
+	\item Press \texttt{NVDA + N} to open the NVDA menu.
+	\item Use the arrow keys to locate \textit{Preferences}.
+	\item Press the Right Arrow to open its submenu.
+	\item Select \textit{Settings} and press Enter.
+\end{enumerate}
+
+\chapter{Saving or Cancelling Settings Changes}
+\section{Saving changes}
+After changing an option in NVDA Settings, use one of these methods:
+\begin{itemize}
+	\item Select \textit{OK} and press Enter to save the changes and close the dialog.
+	\item Select \textit{Apply} and press Enter to save the changes while keeping the dialog open, if that button is available.
+\end{itemize}
+Pressing Enter activates the currently focused control; it does not always save settings. Before pressing Enter, make sure the focus is on the intended button.
+
+\section{Cancelling changes}
+To close the settings dialog without applying the changes made during that session:
+\begin{itemize}
+	\item Press Escape, if the dialog supports this action; or
+	\item Use Tab or \texttt{Shift + Tab} to locate \textit{Cancel}, then press Enter.
+\end{itemize}
+
+\chapter{Configuring the NVDA Modifier Key}
+NVDA commands commonly use a modifier key. By default, the Insert key is usually configured as the NVDA modifier. You can also enable Caps Lock, which may be easier to use on some keyboards.
+\begin{enumerate}
+	\item Open NVDA Settings.
+	\item Select the \textit{Keyboard} category.
+	\item Move to \textit{Select NVDA Modifier Keys}.
+	\item Locate \textit{Caps Lock}.
+	\item Press Space to select it if it is not already selected. You may leave Insert selected as well.
+\end{enumerate}
+The precise number of Tab presses needed to reach an option can vary, so listen to NVDA's announcements rather than relying only on a fixed count.
+
+\chapter{Changing the Keyboard Layout}
+NVDA provides different keyboard layouts, including Laptop and Desktop. Some commands differ between layouts.
+\begin{enumerate}
+	\item Open NVDA Settings and select \textit{Keyboard}.
+	\item Move to \textit{Keyboard Layout}.
+	\item Select \textit{Desktop} or \textit{Laptop}, as appropriate for your keyboard and preference.
+	\item Confirm the change using \textit{Apply} or \textit{OK}.
+\end{enumerate}
+Check the NVDA documentation if you are unsure which commands apply to your selected layout.
+
+\chapter{Installing and Configuring the Optional Clock Add-on}
+An NVDA clock add-on may announce the time or provide a sound notification at a chosen interval. Add-on names, availability, and compatibility can change, so check that any add-on is maintained and compatible with your version of NVDA before installing it. Prefer the official NVDA Add-on Store when the add-on is available there.
+
+\section{Installing through the Add-on Store}
+\begin{enumerate}
+	\item Press \texttt{NVDA + N} to open the NVDA menu.
+	\item Open \textit{Tools}, then select \textit{Add-on Store}, if it is available.
+	\item Use the store's tabs or controls to find the list of available add-ons.
+	\item Locate \textit{Clock} and open its available actions.
+	\item Choose \textit{Install} and follow the prompts.
+	\item If NVDA asks to restart so the add-on can be activated, save any work and confirm the restart.
+\end{enumerate}
+If the add-on is not listed, do not assume it is available for your version. Check the add-on's current documentation or use another supported time-reminder method.
+
+\section{Installing from a downloaded add-on file}
+Only use a downloaded add-on file when it comes from a source you trust and its compatibility has been verified.
+\begin{enumerate}
+	\item Open the add-on's trusted download page and download the compatible file.
+	\item Locate the downloaded file and press Enter to open it.
+	\item Read the confirmation dialog carefully. Continue only if you trust the source and want to install the add-on.
+	\item Restart NVDA if prompted.
+\end{enumerate}
+
+\section{Changing the announcement interval}
+If the installed add-on provides an interval setting:
+\begin{enumerate}
+	\item Open NVDA Settings.
+	\item Locate the \textit{Clock} category.
+	\item Move to the interval option.
+	\item Use the arrow keys to select the desired interval.
+	\item Save the change using \textit{OK} or \textit{Apply}.
+\end{enumerate}
+
+\section{Changing how the time is announced}
+If the add-on provides a time-announcement setting:
+\begin{enumerate}
+	\item Open NVDA Settings and select the \textit{Clock} category.
+	\item Locate \textit{Time announcement} or the equivalent option.
+	\item Choose the available announcement method. A message option may interrupt speech to announce the time; a sound option may play a tone instead.
+	\item Save the change.
+\end{enumerate}
+The exact labels and available options depend on the add-on version.
+
+\part{Essential NVDA Navigation}
+
+\chapter{Browse Mode and Focus Mode}
+NVDA uses two important interaction modes when working with web pages: \textbf{Browse Mode} and \textbf{Focus Mode}. Knowing when to use each mode makes it easier to read Moodle pages and interact with their controls.
+
+\section{Browse Mode}
+Browse Mode is designed for reading web content and navigating its structure. You can use the arrow keys and quick navigation keys to move among headings, links, buttons, form fields, and other page elements. It is especially useful when exploring a Moodle course page or reading instructions.
+
+\section{Focus Mode}
+Focus Mode is used when interacting directly with controls such as text fields and some other input elements. In this mode, keystrokes are passed to the control rather than being interpreted as Browse Mode navigation commands. For example, when entering text into an answer field, Focus Mode allows your typing to reach the field.
+
+\section{Switching between modes}
+NVDA may switch modes automatically when you move to certain controls. You can also switch manually by pressing \texttt{NVDA + Space}. Listen for NVDA's mode announcement, especially if a key such as a letter begins typing into a field instead of moving you around the page.
+
+\chapter{Basic Keyboard Navigation}
+The effect of a key depends on the current mode, the focused control, and the web page. The following table is a general guide; it is not a guarantee that every key will behave identically in every control.
+
+\begin{center}
+	\begin{tabular}{p{0.22\textwidth}p{0.32\textwidth}p{0.36\textwidth}}
+		\toprule
+		\textbf{Key} & \textbf{In Focus Mode}                                       & \textbf{In Browse Mode}                                                  \\
+		\midrule
+		Left Arrow   & Usually moves the text cursor or selection within a control. & Moves to the previous character or navigable item, depending on context. \\
+		Right Arrow  & Usually moves the text cursor or selection within a control. & Moves to the next character or navigable item, depending on context.     \\
+		Up Arrow     & Moves within the focused control where supported.            & Moves to the previous line or item, depending on context.                \\
+		Down Arrow   & Moves within the focused control where supported.            & Moves to the next line or item, depending on context.                    \\
+		Tab          & Moves to the next focusable control.                         & Moves to the next focusable control.                                     \\
+		Space        & Activates or changes the focused control where supported.    & Activates the focused control where supported.                           \\
+		Enter        & Activates the focused control where supported.               & Opens or activates the focused link, button, or control where supported. \\
+		Escape       & May leave a control or close a dialog where supported.       & May close a dialog or dismiss an interface element where supported.      \\
+		\bottomrule
+	\end{tabular}
+\end{center}
+
+\chapter{Navigating Web Pages}
+When a browser displays a web page, NVDA can expose the page as structured content. Browse Mode supports quick navigation commands, many of which use a single letter. These commands generally work in Browse Mode, not Focus Mode.
+
+\begin{center}
+	\begin{tabular}{p{0.25\textwidth}p{0.62\textwidth}}
+		\toprule
+		\textbf{Command}                & \textbf{Action in Browse Mode}                   \\
+		\midrule
+		\texttt{E} / \texttt{Shift + E} & Move to the next / previous edit field.          \\
+		\texttt{H} / \texttt{Shift + H} & Move to the next / previous heading.             \\
+		\texttt{B} / \texttt{Shift + B} & Move to the next / previous button.              \\
+		\texttt{I} / \texttt{Shift + I} & Move to the next / previous list item.           \\
+		\texttt{1} / \texttt{Shift + 1} & Move to the next / previous level-one heading.   \\
+		\texttt{2} / \texttt{Shift + 2} & Move to the next / previous level-two heading.   \\
+		\texttt{3} / \texttt{Shift + 3} & Move to the next / previous level-three heading. \\
+		\texttt{4} / \texttt{Shift + 4} & Move to the next / previous level-four heading.  \\
+		\texttt{5} / \texttt{Shift + 5} & Move to the next / previous level-five heading.  \\
+		\texttt{Ctrl + Home}            & Move to the top of the document or page content. \\
+		\texttt{Ctrl + End}             & Move to the end of the document or page content. \\
+		\bottomrule
+	\end{tabular}
+\end{center}
+
+Heading levels describe the structure of a page. A level-one heading is generally a top-level heading, while level-four and level-five headings indicate lower levels in the hierarchy. Headings are useful landmarks: moving from heading to heading can be faster than reading every line from the beginning.
+
+\chapter{Important NVDA Commands}
+The following commands are useful when working with Windows and web content. Their availability can depend on the NVDA version, selected keyboard layout, and configuration.
+
+\begin{center}
+	\begin{tabular}{p{0.35\textwidth}p{0.52\textwidth}}
+		\toprule
+		\textbf{Shortcut}     & \textbf{Action}                                                                                \\
+		\midrule
+		\texttt{NVDA + T}     & Announces the title of the current window.                                                     \\
+		\texttt{NVDA + F12}   & Announces the current time; pressing it twice may announce the date, depending on the version. \\
+		\texttt{NVDA + Space} & Switches between Browse Mode and Focus Mode.                                                   \\
+		\texttt{NVDA + N}     & Opens the NVDA menu.                                                                           \\
+		\bottomrule
+	\end{tabular}
+\end{center}
+Some NVDA versions also provide a screen-curtain command, but its shortcut and availability may vary. Consult the NVDA User Guide for the version installed on your computer before relying on a specific command.
+
+\part{Using Moodle with NVDA}
+
+\chapter{Opening Moodle with NVDA}
+\begin{enumerate}
+	\item Start NVDA using one of the methods described in Part I.
+	\item Open your web browser. You can press the Windows key, type the browser's name, and press Enter.
+	\item Press \texttt{Alt + D} to focus the browser's address bar.
+	\item Type the web address of your Moodle site. For a local installation, the address may be \texttt{localhost}; otherwise, use the address provided by your school or organisation.
+	\item Press Enter to open the site.
+	\item Use NVDA's navigation commands to explore the page and listen to the names of links, headings, and controls.
+\end{enumerate}
+
+\chapter{Logging in to Moodle}
+The layout of a Moodle login page can vary. Use the following steps as a guide:
+\begin{enumerate}
+	\item Find the \textit{Log in} link and press Enter. Some sites may first show an \textit{Access Moodle} or similar link.
+	\item On the login page, use Tab or Browse Mode navigation to locate the username field.
+	\item Focus the username field and type your username.
+	\item Move to the password field, focus it, and type your password.
+	\item Locate the \textit{Log in} button and press Enter or Space to activate it, as appropriate.
+	\item Wait for the next page to load. Confirm that you are signed in by listening for the page title, headings, or your account menu.
+\end{enumerate}
+Use Tab to move between interactive controls. Do not press Escape after typing unless you specifically intend to leave the current mode or control; Escape does not universally move focus to the next field. Never share your password with another person.
+
+\chapter{Opening a Course}
+\begin{enumerate}
+	\item After logging in, press \texttt{Ctrl + Home} to move to the beginning of the page content.
+	\item Locate a link such as \textit{Home}, \textit{Site home}, \textit{Dashboard}, or \textit{My courses}. The exact label depends on your Moodle site.
+	\item Navigate through the available course links.
+	\item When NVDA announces the course you want, press Enter to open it.
+	\item Explore the course page using headings, links, and other navigation commands to find learning materials and activities.
+\end{enumerate}
+
+\chapter{Starting a Moodle Quiz}
+\begin{enumerate}
+	\item Open the course that contains the quiz.
+	\item Navigate through the course page until you find the quiz link.
+	\item Press Enter to open the quiz information page.
+	\item Locate \textit{Attempt quiz now} or the equivalent button and activate it.
+	\item If a confirmation dialog appears, use Tab to move among its controls and locate the button that starts the attempt.
+	\item Press Enter on the start button and wait for the quiz page to load.
+\end{enumerate}
+Read any instructions, time limits, and attempt rules before starting. The exact labels and dialog layout depend on the Moodle version and the quiz settings.
+
+\chapter{Navigating a Moodle Quiz}
+A Moodle quiz may display several questions on each page or all questions on one page. The quiz settings chosen by the instructor determine the layout.
+
+\section{Moving between quiz pages}
+If the quiz has several pages, answer or review the questions on the current page. Then locate and activate \textit{Next page} to continue. To return to an earlier group of questions, activate \textit{Previous page}, if available.
+
+If all questions appear on one page, move through the questions using the arrow keys, headings, or other Browse Mode navigation commands.
+
+\section{Using question headings}
+A question may be announced with a heading such as \textit{Question 1}. On many Moodle quiz pages, question headings use heading level three, but this can vary. If the headings are correctly exposed to NVDA, use \texttt{3} and \texttt{Shift + 3} to move between level-three headings.
+
+\section{Using Quiz navigation}
+Some quiz pages include a \textit{Quiz navigation} section with links to individual questions. Use these links to jump to the relevant question or question page. Activating a question link may move you to the page containing the question without placing the reading cursor directly on the question, so you may need to navigate further.
+
+\chapter{Answering Multiple-Choice Questions}
+A multiple-choice question commonly includes a question heading, the question text, and a group of answer options. Read the entire question and all available options before making a selection.
+
+\begin{enumerate}
+	\item Navigate to the question heading. If headings are exposed correctly, you may be able to use \texttt{3} to move to the next level-three heading.
+	\item Read the question text carefully. On some pages, the question text may have its own heading; on others, it may be presented as ordinary text.
+	\item Move through the answer options. NVDA may announce each radio button and its associated text separately or together, depending on the page structure.
+	\item When you reach the radio button for your chosen answer, press Space to select it.
+	\item Listen for an announcement such as \textit{checked} or \textit{selected}, or revisit the option to confirm your choice.
+	\item Before moving on, make sure the selected answer matches the option you intended.
+\end{enumerate}
+If letter-based navigation does not work, you may be in Focus Mode or interacting with a control that uses the key for text entry. Press \texttt{NVDA + Space} to switch modes when appropriate, then try again.
+
+\chapter{Checking the Time Remaining}
+If the quiz is timed, Moodle usually displays the remaining time somewhere on the quiz page. Its location and how it is announced can vary by theme and version.
+\begin{enumerate}
+	\item Press \texttt{Ctrl + Home} to move to the beginning of the page content.
+	\item Navigate through the page and listen for the time-remaining information.
+	\item If you are already at the first question, you can try moving to the content immediately before it with the Up Arrow.
+	\item If you have installed a compatible clock add-on, use its configured announcement feature as an additional reminder, not as a replacement for checking Moodle's quiz timer.
+\end{enumerate}
+For easier navigation, a quiz that displays a small number of questions per page may be more manageable for some screen-reader users. The number of questions per page is normally controlled by the quiz settings, so you may need to ask your instructor or administrator whether a different layout is possible.
+
+\chapter{Submitting a Moodle Quiz Attempt}
+Submitting a quiz is an important final step. Before you submit, review your answers if time and the quiz rules allow it.
+
+\begin{enumerate}
+	\item Navigate to the \textit{Quiz navigation} section, if available.
+	\item Locate and activate \textit{Finish attempt}. Depending on the page layout, this link may appear after the question links or elsewhere on the page.
+	\item Review the attempt summary. Moodle may show which questions have been answered and which remain unanswered.
+	\item If you need to return to the quiz, choose \textit{Return to attempt}, if available.
+	\item When you are ready to submit, locate \textit{Submit all and finish} and activate it.
+	\item If Moodle asks you to confirm submission, read the message carefully and confirm only when you are sure you want to submit.
+	\item Wait for the confirmation or review page to load. Listen for a message indicating that the attempt has been submitted.
+\end{enumerate}
+Do not assume that opening \textit{Finish attempt} submits the quiz. In many Moodle configurations, you must separately activate \textit{Submit all and finish} and confirm the action.
+
+\appendix
+\chapter{Getting Help with NVDA}
+If you encounter a problem with NVDA that is not answered by this guide, you can ask for help on the NVDA users' mailing list. Send your message to \href{mailto:nvda@nvda.groups.io}{nvda@nvda.groups.io} or visit \url{https://nvda.groups.io} to learn how to subscribe and search previous discussions.
+
+When asking for help, describe the version of NVDA you are using, the version of Windows, the application or Moodle page where the problem occurred, and the steps that reproduce the problem. Do not include your password or other confidential information.
+
+\backmatter
+\chapter*{Final Advice}
+\addcontentsline{toc}{chapter}{Final Advice}
+The most useful skill when using Moodle with NVDA is learning to move systematically through a page and listen to the controls as they are announced. Practise with headings, links, buttons, form fields, and quiz questions before relying on these techniques in an important assessment.
+
+Moodle interfaces and NVDA commands can change. If an instruction in this guide does not match your screen, use the general navigation methods described here and consult the current NVDA User Guide, your institution's Moodle support team, or your instructor. With practice, patience, and careful checking, many routine Moodle activities can become more predictable and independent.
+\end{document}
