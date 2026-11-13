@@ -4,7 +4,7 @@ This repository contains a beginner-friendly guide for using Moodle with
 NonVisual Desktop Access (NVDA). It was created to help staff of the
 University of Jos guide blind students towards writing Moodle examinations
 independently. The guide was written during an internship in the University's
-ICT Directorate, in the Web Accessibility and Support (WAS) Unit.
+ICT Directorate, in the Web Application and Support (WAS) Unit.
 
 ## Download the latest PDF
 
